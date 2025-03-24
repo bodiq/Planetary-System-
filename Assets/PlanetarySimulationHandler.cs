@@ -8,6 +8,6 @@ public class PlanetarySimulationHandler : MonoBehaviour
     private void Start()
     {
         var planetarySystemFactory = new PlanetarySystemFactory(planetPrefab, transform);
-        planetarySystemFactory.Create(30);
+        planetarySystemFactory.Create(100);
     }
 }
