@@ -8,8 +8,8 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "Planetary System Settings", menuName = "ScriptableObjects/Planetary System Settings")]
     public class PlanetSystemSettings : ScriptableObject
     {
-        [Range(20f, 200f)] [SerializeField] private double mainPlanetarySystemMass;
-        [Range(3, 10)] [SerializeField] private int planetsCount;
+        [Range(1f, 200f)] [SerializeField] private double mainPlanetarySystemMass;
+        [Range(3, 25)] [SerializeField] private int planetsCount;
         
         [SerializeField] private float minAdditionalPlanetPosOffset;
         [SerializeField] private float maxAdditionalPlanetPosOffset;

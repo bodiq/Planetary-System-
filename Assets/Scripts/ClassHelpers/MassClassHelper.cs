@@ -1,50 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 using Enums;
-using Random = UnityEngine.Random;
 
 namespace ClassHelpers
 {
     public static class MassClassHelper
     {
+        private static readonly Dictionary<MassClassEnum, (double maxMass, float minRadius, float maxRadius)> MassData =
+            new()
+            {
+                {MassClassEnum.Asteroidan, (0.00001, 0, 0.03f)},
+                {MassClassEnum.Mercurian,  (0.1, 0.03f, 0.7f)},
+                {MassClassEnum.Subterran, (0.5, 0.5f, 1.2f)},
+                {MassClassEnum.Terran, (2, 0.8f, 1.9f)},
+                {MassClassEnum.Superterran, (10, 1.3f, 3.3f)},
+                {MassClassEnum.Neptunian, (50, 2.1f, 5.7f)},
+                {MassClassEnum.Jovian, (5000, 3.5f, 27f)}
+            };
+        
         public static MassClassEnum GetPlanetClassByMass(double mass)
         {
-            if (mass < 0.00001)
-                return MassClassEnum.Asteroidan;
-            if (mass < 0.1)
-                return MassClassEnum.Mercurian;
-            if (mass < 0.5)
-                return MassClassEnum.Subterran;
-            if (mass < 2)
-                return MassClassEnum.Mercurian;
-            if (mass < 10)
-                return MassClassEnum.Superterran;
-            if (mass < 50)
-                return MassClassEnum.Neptunian;
+            foreach (var planet in MassData)
+            {
+                if (mass < planet.Value.maxMass)
+                {
+                    return planet.Key;
+                }
+            }
 
             return MassClassEnum.Jovian;
         }
 
-        public static float GetPlanetRadius(MassClassEnum massClass)
+        public static float GetPercentOfMaxMass(MassClassEnum massClass, double mass)
         {
-            switch (massClass)
+            if (MassData.TryGetValue(massClass, out var massData))
             {
-                case MassClassEnum.Asteroidan:
-                    return Random.Range(0f, 0.03f);
-                case MassClassEnum.Mercurian:
-                    return Random.Range(0.03f, 0.7f);
-                case MassClassEnum.Subterran:
-                    return Random.Range(0.5f, 1.2f);
-                case MassClassEnum.Terran:
-                    return Random.Range(0.8f, 1.9f);
-                case MassClassEnum.Superterran:
-                    return Random.Range(1.3f, 3.3f);
-                case MassClassEnum.Neptunian:
-                    return Random.Range(2.1f, 5.7f);
-                case MassClassEnum.Jovian:
-                    return Random.Range(3.5f, 27f);
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(massClass), massClass, null);
+                return (float)(100.0 / massData.maxMass * mass);
             }
+            
+            return -1f;
+        }
+
+        public static float GetPlanetRadius(MassClassEnum massClass, float percent)
+        {
+            if (MassData.TryGetValue(massClass, out var massData))
+            {
+                return massData.maxRadius + (massData.maxRadius - massData.minRadius) * (percent / 100);
+            }
+
+            return -1f;
         }
     }
 }

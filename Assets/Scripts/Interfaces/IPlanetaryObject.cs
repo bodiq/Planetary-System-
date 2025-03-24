@@ -9,7 +9,7 @@ namespace Interfaces
         MassClassEnum MassClass { get; set; }
         double Mass { get; set; }
         
-        public void Initialize(double mass, float previousPlanetXPos, PlanetSystemSettings planetSystemSettings, Vector3 centerPoint);
+        public void Initialize(double mass, GameObject planetaryObject, PlanetSystemSettings planetSystemSettings, Vector3 centerPoint);
         public void Simulate(float deltaTime);
     }
 }

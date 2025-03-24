@@ -2,6 +2,6 @@ namespace Interfaces
 {
     public interface IPlanetarySystemFactory
     {
-        public IPlanetarySystem Create(double mass);
+        public IPlanetarySystem Create(double totalMass);
     }
 }

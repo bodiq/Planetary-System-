@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c130a811034c9da767f2cd334b6a02, type: 3}
   m_Name: Planetary System Settings
   m_EditorClassIdentifier: 
-  mainPlanetarySystemMass: 40
-  planetsCount: 6
-  minAdditionalPlanetPosOffset: 1
-  maxAdditionalPlanetPosOffset: 5
-  minPlanetOrbitSpeed: 10
-  maxPlanetOrbitSpeed: 50
+  mainPlanetarySystemMass: 100
+  planetsCount: 10
+  minAdditionalPlanetPosOffset: 0.1
+  maxAdditionalPlanetPosOffset: 1
+  minPlanetOrbitSpeed: 5
+  maxPlanetOrbitSpeed: 25
   planetsVisualData:
   - planetMaterial: {fileID: 2100000, guid: d7345edb353d0794296950a9adb3ad4d, type: 2}
     planetType: 0
