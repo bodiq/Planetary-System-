@@ -1,4 +1,5 @@
 using Interfaces;
+using ScriptableObjects;
 using UnityEngine;
 
 namespace Core
@@ -6,13 +7,14 @@ namespace Core
     public class PlanetarySimulationHandler : MonoBehaviour
     {
         [SerializeField] private Planet planetPrefab;
+        [SerializeField] private PlanetSystemSettings planetSystemSettings;
     
         private IPlanetarySystem _planetSystemFactory;
     
         private void Start()
         {
-            var factory = new PlanetarySystemFactory(planetPrefab, transform);
-            _planetSystemFactory = factory.Create(100);
+            var factory = new PlanetarySystemFactory(planetPrefab, transform, planetSystemSettings);
+            _planetSystemFactory = factory.Create(planetSystemSettings.MainPlanetarySystemMass);
         }
 
         private void Update()
