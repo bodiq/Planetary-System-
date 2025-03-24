@@ -1,5 +1,6 @@
 ﻿using System;
 using Enums;
+using Random = UnityEngine.Random;
 
 namespace ClassHelpers
 {
@@ -21,6 +22,29 @@ namespace ClassHelpers
                 return MassClassEnum.Neptunian;
 
             return MassClassEnum.Jovian;
+        }
+
+        public static float GetPlanetRadius(MassClassEnum massClass)
+        {
+            switch (massClass)
+            {
+                case MassClassEnum.Asteroidan:
+                    return Random.Range(0f, 0.03f);
+                case MassClassEnum.Mercurian:
+                    return Random.Range(0.03f, 0.7f);
+                case MassClassEnum.Subterran:
+                    return Random.Range(0.5f, 1.2f);
+                case MassClassEnum.Terran:
+                    return Random.Range(0.8f, 1.9f);
+                case MassClassEnum.Superterran:
+                    return Random.Range(1.3f, 3.3f);
+                case MassClassEnum.Neptunian:
+                    return Random.Range(2.1f, 5.7f);
+                case MassClassEnum.Jovian:
+                    return Random.Range(3.5f, 27f);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(massClass), massClass, null);
+            }
         }
     }
 }

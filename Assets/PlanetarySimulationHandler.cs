@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 public class PlanetarySimulationHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Planet planetPrefab;
+    
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var planetarySystemFactory = new PlanetarySystemFactory(planetPrefab, transform);
+        planetarySystemFactory.Create(30);
     }
 }
