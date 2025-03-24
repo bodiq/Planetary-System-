@@ -16,8 +16,10 @@ MonoBehaviour:
   planetsCount: 10
   minAdditionalPlanetPosOffset: 0.1
   maxAdditionalPlanetPosOffset: 1
-  minPlanetOrbitSpeed: 5
-  maxPlanetOrbitSpeed: 25
+  minPlanetMovingOrbitSpeed: 3
+  maxPlanetMovingOrbitSpeed: 15
+  minPlanetRotatingOrbitSpeed: 10
+  maxPlanetRotatingOrbitSpeed: 25
   planetsVisualData:
   - planetMaterial: {fileID: 2100000, guid: d7345edb353d0794296950a9adb3ad4d, type: 2}
     planetType: 0

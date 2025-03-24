@@ -2,6 +2,7 @@
 using Data;
 using Enums;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ScriptableObjects
 {
@@ -14,8 +15,11 @@ namespace ScriptableObjects
         [SerializeField] private float minAdditionalPlanetPosOffset;
         [SerializeField] private float maxAdditionalPlanetPosOffset;
 
-        [SerializeField] private float minPlanetOrbitSpeed;
-        [SerializeField] private float maxPlanetOrbitSpeed;
+        [SerializeField] private float minPlanetMovingOrbitSpeed;
+        [SerializeField] private float maxPlanetMovingOrbitSpeed;
+        
+        [SerializeField] private float minPlanetRotatingOrbitSpeed;
+        [SerializeField] private float maxPlanetRotatingOrbitSpeed;
         
         [SerializeField] private List<PlanetVisualData> planetsVisualData;
         
@@ -23,8 +27,10 @@ namespace ScriptableObjects
         public int PlanetsCount => planetsCount;
         public float MinAdditionalPlanetPosOffset => minAdditionalPlanetPosOffset;
         public float MaxAdditionalPlanetPosOffset => maxAdditionalPlanetPosOffset;
-        public float MinPlanetOrbitSpeed => minPlanetOrbitSpeed;
-        public float MaxPlanetOrbitSpeed => maxPlanetOrbitSpeed;
+        public float MinPlanetMovingOrbitSpeed => minPlanetMovingOrbitSpeed;
+        public float MaxPlanetMovingOrbitSpeed => maxPlanetMovingOrbitSpeed;
+        public float MinPlanetRotatingOrbitSpeed => minPlanetRotatingOrbitSpeed;
+        public float MaxPlanetRotatingOrbitSpeed => maxPlanetRotatingOrbitSpeed;
         
         public Dictionary<MassClassEnum, Material> PlanetsVisualData = new();
 

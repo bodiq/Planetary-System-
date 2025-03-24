@@ -12,7 +12,8 @@ namespace Core
         public MassClassEnum MassClass { get; set; }
         public double Mass { get; set; }
 
-        private float _orbitSpeed;
+        private float _orbitMovingSpeed;
+        private float _orbitRotatingSpeed;
         private Vector3 _center;
         
         public void Initialize(double mass, GameObject planetaryObject, PlanetSystemSettings planetSystemSettings, Vector3 centerPoint)
@@ -30,12 +31,14 @@ namespace Core
         
         public void Simulate(float deltaTime)
         {
-            transform.RotateAround(_center, Vector3.down, _orbitSpeed * deltaTime);
+            transform.RotateAround(_center, Vector3.down, _orbitMovingSpeed * deltaTime);
+            transform.Rotate(Vector3.up, _orbitRotatingSpeed * deltaTime);
         }
 
         private void SetOrbitSetup(PlanetSystemSettings planetSystemSettings, Vector3 center)
         {
-            _orbitSpeed = Random.Range(planetSystemSettings.MinPlanetOrbitSpeed, planetSystemSettings.MaxPlanetOrbitSpeed);
+            _orbitMovingSpeed = Random.Range(planetSystemSettings.MinPlanetMovingOrbitSpeed, planetSystemSettings.MaxPlanetMovingOrbitSpeed);
+            _orbitRotatingSpeed = Random.Range(planetSystemSettings.MinPlanetRotatingOrbitSpeed, planetSystemSettings.MaxPlanetRotatingOrbitSpeed);
             _center = center;
         }
 
