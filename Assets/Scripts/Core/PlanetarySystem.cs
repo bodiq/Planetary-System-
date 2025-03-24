@@ -9,9 +9,12 @@ namespace Core
         private readonly List<IPlanetaryObject> _planetaryObjects = new ();
         public IEnumerable<IPlanetaryObject> PlanetaryObjects => _planetaryObjects;
         
-        public void Update(float deltaTime)
+        public void UpdatePlanets(float deltaTime)
         {
-            throw new System.NotImplementedException();
+            foreach (var planet in PlanetaryObjects)
+            {
+                planet.Simulate(deltaTime);
+            }
         }
 
         public void AddPlanet(IPlanetaryObject planet)

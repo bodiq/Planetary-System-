@@ -9,20 +9,24 @@ namespace Core
     {
         public MassClassEnum MassClass { get; set; }
         public double Mass { get; set; }
+
+        private float _orbitSpeed;
+        
         public void Initialize(double mass, float previousPlanetXPos)
         {
             Mass = mass;
-            gameObject.name = MassClass.ToString();
             MassClass = MassClassHelper.GetPlanetClassByMass(Mass);
-            transform.localScale = Vector3.one;
+            gameObject.name = MassClass.ToString();
             var currentRadius = MassClassHelper.GetPlanetRadius(MassClass);
+            transform.localScale = Vector3.one * currentRadius;
             var additionalRadiusOffset = Random.Range(1f, 6f);
             transform.position = new Vector3(previousPlanetXPos + currentRadius + additionalRadiusOffset, transform.position.y, transform.position.z);
+            _orbitSpeed = Random.Range(5f, 15f);
         }
 
         public void Simulate(float deltaTime)
         {
-            throw new System.NotImplementedException();
+            transform.RotateAround(Vector3.zero, Vector3.up, _orbitSpeed * deltaTime);
         }
     }
 }
