@@ -8,6 +8,7 @@ namespace Core
 {
     public class Planet : MonoBehaviour, IPlanetaryObject
     {
+        [SerializeField] private MeshRenderer meshRenderer;
         public MassClassEnum MassClass { get; set; }
         public double Mass { get; set; }
 
@@ -25,6 +26,10 @@ namespace Core
             transform.position = new Vector3(previousPlanetXPos + currentRadius + additionalRadiusOffset, transform.position.y, transform.position.z);
             _orbitSpeed = Random.Range(planetSystemSettings.MinPlanetOrbitSpeed, planetSystemSettings.MaxPlanetOrbitSpeed);
             _center = centerPoint;
+            if (planetSystemSettings.PlanetsVisualData.TryGetValue(MassClass, out var material))
+            {
+                meshRenderer.material = material;
+            }
         }
 
         public void Simulate(float deltaTime)

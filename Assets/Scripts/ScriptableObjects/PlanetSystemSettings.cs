@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Data;
+using Enums;
+using UnityEngine;
 
 namespace ScriptableObjects
 {
@@ -14,11 +17,25 @@ namespace ScriptableObjects
         [SerializeField] private float minPlanetOrbitSpeed;
         [SerializeField] private float maxPlanetOrbitSpeed;
         
+        [SerializeField] private List<PlanetVisualData> planetsVisualData;
+        
         public double MainPlanetarySystemMass => mainPlanetarySystemMass;
         public int PlanetsCount => planetsCount;
         public float MinAdditionalPlanetPosOffset => minAdditionalPlanetPosOffset;
         public float MaxAdditionalPlanetPosOffset => maxAdditionalPlanetPosOffset;
         public float MinPlanetOrbitSpeed => minPlanetOrbitSpeed;
         public float MaxPlanetOrbitSpeed => maxPlanetOrbitSpeed;
+        
+        public Dictionary<MassClassEnum, Material> PlanetsVisualData = new();
+
+        public void InitializeVisualData()
+        {
+            PlanetsVisualData.Clear();
+
+            foreach (var visualData in planetsVisualData)
+            {
+                PlanetsVisualData.Add(visualData.planetType, visualData.planetMaterial);
+            }
+        }
     }
 }

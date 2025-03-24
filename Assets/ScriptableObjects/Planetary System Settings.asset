@@ -18,3 +18,18 @@ MonoBehaviour:
   maxAdditionalPlanetPosOffset: 5
   minPlanetOrbitSpeed: 10
   maxPlanetOrbitSpeed: 50
+  planetsVisualData:
+  - planetMaterial: {fileID: 2100000, guid: d7345edb353d0794296950a9adb3ad4d, type: 2}
+    planetType: 0
+  - planetMaterial: {fileID: 2100000, guid: 0c2d13c3615510e4a8debaef5c39c3de, type: 2}
+    planetType: 1
+  - planetMaterial: {fileID: 2100000, guid: 490c25b2fda35fc4582a9582c4179ad5, type: 2}
+    planetType: 2
+  - planetMaterial: {fileID: 2100000, guid: 9c3435b7cf3210044b3a24266d8aebf1, type: 2}
+    planetType: 3
+  - planetMaterial: {fileID: 2100000, guid: 67436367136736141b5c7e131555c4d1, type: 2}
+    planetType: 4
+  - planetMaterial: {fileID: 2100000, guid: d12d326c7ff660a40aed23b21d98c6ad, type: 2}
+    planetType: 5
+  - planetMaterial: {fileID: 2100000, guid: e94c7625cd2e80d4e8fd19b24fc89d93, type: 2}
+    planetType: 6

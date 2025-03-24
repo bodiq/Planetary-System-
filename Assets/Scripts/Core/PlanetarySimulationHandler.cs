@@ -13,6 +13,8 @@ namespace Core
     
         private void Start()
         {
+            planetSystemSettings.InitializeVisualData();
+            
             var factory = new PlanetarySystemFactory(planetPrefab, transform, planetSystemSettings);
             _planetSystemFactory = factory.Create(planetSystemSettings.MainPlanetarySystemMass);
         }
